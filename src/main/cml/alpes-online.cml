@@ -42,7 +42,7 @@ Domain CadenaSuministroDomain {
         Entity Producto {
             String idProducto
             String descripcion
-            - TipoItem tipo
+            - TipoProducto tipo
         }
         Entity Bodega {
             String idBodega
