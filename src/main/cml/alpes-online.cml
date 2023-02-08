@@ -22,8 +22,8 @@ Domain CadenaSuministroDomain {
             Date fecha
             - List<Producto> productos
         }
-        Entity TipoItem {
-            String tipoItem
+        Entity TipoProducto {
+            String tipoProducto
         }
         Entity Pedido {
             String idPedido
