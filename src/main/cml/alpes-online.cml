@@ -1,9 +1,16 @@
-Domain CadenaSuministroDomain {
-    domainVisionStatement = "Cumplimiento de la órden"
-
-  Subdomain InboundDomain {
+Domain RecepcionDomain {
+    domainVisionStatement = "Recepción de órdenes y pedidos"
+    Subdomain OrdenDomain {
         type = SUPPORTING_DOMAIN
-        domainVisionStatement = "Subdominio en el que se gestina todo lo relacionado con las actividades de entrada."
+        domainVisionStatement = "Subdominio para recepción de órdenes."
+        Entity Orden {
+            String idOrden
+            Date fecha
+            - List<Producto> productos
+        }
+        Entity TipoProducto {
+            String tipoProducto
+        }
         Entity Cliente {
             String id
             - TipoIdentificacion tipoIdentificacion
@@ -17,14 +24,11 @@ Domain CadenaSuministroDomain {
             String nombres
             String apellidos
         }
-        Entity Orden {
-            String idOrden
-            Date fecha
-            - List<Producto> productos
-        }
-        Entity TipoProducto {
-            String tipoProducto
-        }
+    }
+
+    Subdomain PedidoDomain {
+        type = SUPPORTING_DOMAIN
+        domainVisionStatement = "Subdominio para recepción de pedidos."
         Entity Pedido {
             String idPedido
             Date fecha
@@ -34,6 +38,16 @@ Domain CadenaSuministroDomain {
         Entity EstadoPedido {
             String estado
         }
+    }
+
+}
+
+Domain CadenaSuministroDomain {
+    domainVisionStatement = "Cumplimiento de la órden"
+
+    Subdomain InboundDomain {
+        type = SUPPORTING_DOMAIN
+        domainVisionStatement = "Subdominio en el que se gestina todo lo relacionado con las actividades de entrada."
     }
 
     Subdomain GestionInventarioDomain {

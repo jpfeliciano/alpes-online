@@ -1,0 +1,84 @@
+/* Example Context Map written with 'ContextMapper DSL' */
+ContextMap AlpesOnlineContextMap {
+    type = SYSTEM_LANDSCAPE
+    state = AS_IS
+    /* Add bounded contexts to this context map: */
+    contains RecepcionContext
+    contains InboundContext
+    contains GestionInventarioContext
+    contains OutboundContext
+    contains FacilitacionContext
+    contains EjecucionContext
+
+    /* Define the context relationships: */
+    InboundContext [D, ACL]<-[U] RecepcionContext
+
+    GestionInventarioContext [D]<-[U] InboundContext
+
+    OutboundContext [P]<->[P] GestionInventarioContext
+
+    OutboundContext [U]->[D] FacilitacionContext
+
+    FacilitacionContext [U]->[D] EjecucionContext
+
+    FacilitacionContext [D, ACL]<-[U] RecepcionContext
+}
+
+/* Bounded Context Definitions */
+BoundedContext RecepcionContext implements RecepcionDomain
+
+BoundedContext InboundContext implements InboundDomain
+
+BoundedContext GestionInventarioContext implements GestionInventarioDomain
+
+BoundedContext OutboundContext implements OutboundDomain
+
+BoundedContext FacilitacionContext implements FacilitacionDomain
+
+BoundedContext EjecucionContext implements EjecucionDomain
+
+/* Domain & Subdomain Definitions */
+Domain RecepcionDomain {
+    Subdomain OrdenDomain {
+        type = SUPPORTING_DOMAIN
+        domainVisionStatement = "Subdominio para recepción de órdenes."
+    }
+
+    Subdomain PedidoDomain {
+        type = SUPPORTING_DOMAIN
+        domainVisionStatement = "Subdominio para recepción de pedidos."
+    }
+
+}
+
+Domain CadenaSuministroDomain {
+    Subdomain InboundDomain {
+        type = SUPPORTING_DOMAIN
+        domainVisionStatement = "Subdominio en el que se gestina todo lo relacionado con las actividades de entrada."
+    }
+
+    Subdomain GestionInventarioDomain {
+        type = SUPPORTING_DOMAIN
+        domainVisionStatement = "Subdominio en el que se gestina todo lo relacionado con actividades de gestión del inventario."
+    }
+
+    Subdomain OutboundDomain {
+        type = SUPPORTING_DOMAIN
+        domainVisionStatement = "Subdominio en el que se gestina todo lo relacionado con actividades de salida."
+    }
+
+}
+
+Domain LogisticaDomain {
+    Subdomain FacilitacionDomain {
+        type = CORE_DOMAIN
+        domainVisionStatement = "Subdominio en el que se gestina todo lo relacionado con planificación, despacho de pedidos y gestión de instalaciones."
+    }
+
+    Subdomain EjecucionDomain {
+        type = CORE_DOMAIN
+        domainVisionStatement = "Subdominio en el que se gestina todo lo relacionado con gestión de última milla e integración con couriers."
+    }
+
+}
+
