@@ -1,0 +1,54 @@
+BoundedContext InventarioContext{
+  type = FEATURE
+  domainVisionStatement = "Contexto de Inventario es el encargado de administrar y coordinar los productos en las bodegas y centros para su posterior distribución"
+  implementationTechnology = "Python"
+  responsibilities = "Bodega", "CentroSuministro, BodegaExterna, RutaSuministro"
+  knowledgeLevel = CONCRETE
+
+    Aggregate Almacenamiento {
+      Entity Bodegas {
+        String id
+        Date fecha
+        String area
+        - List<Producto> productos
+      }
+      Entity CentrosSuministro {
+        String idProducto
+        String descripcion
+        String cantidad
+      }
+      Entity BodegaExterna {
+        String idProducto
+        String descripcion
+        String cantidad
+      }
+      Entity Producto {
+            String idProducto
+            String descripcion
+        }
+    }
+    
+    Aggregate PickuPoint {
+
+     Entity Entrega {
+            String id
+            String nombre
+            String direccion
+            String cliente
+        }
+     Entity Cliente {
+            String id
+            - TipoIdentificacion tipoIdentificacion
+            String identificacion
+            - Nombre nombres
+        }
+    Entity TipoIdentificacion {
+            String tipoIdentificacion
+        }
+        Entity Nombre {
+            String nombres
+            String apellidos
+        }
+
+    }
+}

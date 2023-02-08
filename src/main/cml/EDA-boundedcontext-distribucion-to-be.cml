@@ -1,0 +1,55 @@
+BoundedContext DistribucionContext{
+  type = FEATURE
+  domainVisionStatement = "Contexto de Distribución es el encargado de generar las rutas dinámicas y gestionar las diferentes flotas para la entrega oportuna"
+  implementationTechnology = "Python"
+  responsibilities = "Empacar", "HojaRuta, FlotaTractores, FlotaDomiciliarios, ProveedorTransporte, DistribuidoresFinales"
+  knowledgeLevel = CONCRETE
+
+    Aggregate Flotas {
+      Entity FlotaTractores {
+        String idRuta
+        Date fecha
+        String area
+        - List<Producto> productos
+      }
+      Entity FlotaDomiciliarios {
+        String idRuta
+        String descripcion
+        - List<Producto> productos
+      }
+      Entity ProveedorTransporte {
+        String idRuta
+        String descripcion
+        - List<Producto> productos
+      }
+      Entity Producto {
+            String idProducto
+            String descripcion
+        }
+    }
+    
+    Aggregate Depacho {
+
+     Entity Empacar {
+            String id
+            String descripcion
+            String volumen
+            String producto
+        }
+     Entity HojaRuta {
+            String id
+            String identificacion
+            - List<Producto> productos
+        }
+    Entity DistribuidoresFinales {
+            String id
+            String ruta
+            - List<Producto> productos
+        }
+        Entity Nombre {
+            String nombres
+            String apellidos
+        }
+
+    }
+}

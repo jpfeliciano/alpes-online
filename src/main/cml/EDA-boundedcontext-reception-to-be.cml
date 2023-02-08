@@ -1,0 +1,43 @@
+BoundedContext RecepcionContext{
+  type = FEATURE
+  domainVisionStatement = "Contexto de Recepción es el encargado de recibir las ordenes de los clientes ordenarlos y dejarlos listos para iniciar suministro"
+  implementationTechnology = "Python"
+  responsibilities = "Cluentes", "Paquetes"
+  knowledgeLevel = CONCRETE
+
+    Aggregate Paquetes {
+      Entity Orden {
+        String idOrden
+        Date fecha
+        - List<Producto> productos
+      }
+      Entity Producto {
+        String idProducto
+        String descripcion
+        String cantidad
+      }
+    }
+    
+    Aggregate Clientes {
+    Entity Supermercado {
+      String nombre
+      String direccion
+      - List<Producto> productos
+      String formaPago
+    }
+    Entity Restaruante {
+      String nombre
+      String direccion
+      - List<Producto> productos
+      String formaPago
+    }
+    Entity ProveedorProductos {
+      String nombre
+      String direccion
+      - List<Producto> productos
+      String formaPago
+    }
+    }
+}
+
+

@@ -1,0 +1,21 @@
+ContextMap EDAContextMapper {
+    type SYSTEM_LANDSCAPE
+    state TO_BE
+
+	contains Reception, Supply, Inventory, Distribution
+	
+	Reception[D] <- [U]Supply
+
+	Supply[U] -> [D]Inventory
+	
+	Inventory <-> Distribution
+	
+}
+
+BoundedContext Reception
+
+BoundedContext Supply
+
+BoundedContext Inventory
+
+BoundedContext Distribution

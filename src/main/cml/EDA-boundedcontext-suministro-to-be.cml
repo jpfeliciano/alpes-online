@@ -1,0 +1,49 @@
+BoundedContext SuministroContext{
+  type = FEATURE
+  domainVisionStatement = "Contexto de Suministro es el encargado de generar las rutas para enviar los productos a las bodegas internas, externas y centros de suministro"
+  implementationTechnology = "Python"
+  responsibilities = "Bodega", "CentroSuministro, BodegaExterna, RutaSuministro"
+  knowledgeLevel = CONCRETE
+
+    Aggregate Almacenamiento {
+      Entity Bodegas {
+        String id
+        Date fecha
+        String area
+        - List<Producto> productos
+      }
+      Entity CentrosSuministro {
+        String idProducto
+        String descripcion
+        String cantidad
+      }
+      Entity BodegaExterna {
+        String idProducto
+        String descripcion
+        String cantidad
+      }
+      Entity Producto {
+            String idProducto
+            String descripcion
+        }
+    }
+    
+    Aggregate RutaSuministro {
+    Entity RutaCorta {
+      String nombre
+      - List<Direccion> direcciones
+      - List<PuntosGPS> puntosgps
+      String formaPago
+    }
+    Entity PuntosGPS{
+        String coorY
+        String coorX
+    }
+    Entity Direccion{
+        String carrera
+        String calle
+        String data
+    }
+
+    }
+}
