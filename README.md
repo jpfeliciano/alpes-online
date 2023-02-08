@@ -21,8 +21,17 @@ Esta se encuentra en el siguiente link:
 ## Entrega 2: Documentación del lenguaje ubicuo  : 
 Esta se encuentra en el siguiente link:
 Dashboard AS-IS and TO-BE : (https://miro.com/app/board/uXjVPq44x64=/)
+Imagen: (https://github.com/jpfeliciano/alpes-online/blob/master/Image/AS-IS-TO-BE.png)
 
 
-## Entrega 1: Documentación de dominios y sub-dominios: 
+## Entrega 3: Documentación de contextos acotados: 
 Esta se encuentra en el siguiente link:
-(https://github.com/jpfeliciano/alpes-online/blob/master/src/main/cml/EDA-domain-as-is.cml)
+([https://github.com/jpfeliciano/alpes-online/blob/master/src/main/cml/EDA-domain-as-is.cml](https://github.com/jpfeliciano/alpes-online/tree/master/src/main/cml))
+
+
+## Resumen
+La entrega se realizo con la herramienta Gitpod.io, se adjunta los links pertinentes: 
+  - .gitpod.Dockerfile: (https://github.com/jpfeliciano/alpes-online/blob/master/.gitpod.Dockerfile)
+  - .gitpod.yml: (https://github.com/jpfeliciano/alpes-online/blob/master/.gitpod.yml)
+La guia de entrega se encuentra en el siguiente pdf:
+Entrega1: (https://github.com/jpfeliciano/alpes-online/blob/master/Entrega1/Entrega1-LenguajeUbicuo-Dominio.pdf)
