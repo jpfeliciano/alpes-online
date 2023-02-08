@@ -1,0 +1,134 @@
+Domain CadenaSuministroDomain {
+    domainVisionStatement = "Cumplimiento de la órden"
+
+  Subdomain InboundDomain {
+        type = SUPPORTING_DOMAIN
+        domainVisionStatement = "Subdominio en el que se gestina todo lo relacionado con las actividades de entrada."
+        Entity Cliente {
+            String id
+            - TipoIdentificacion tipoIdentificacion
+            String identificacion
+            - Nombre nombres
+        }
+        Entity TipoIdentificacion {
+            String tipoIdentificacion
+        }
+        Entity Nombre {
+            String nombres
+            String apellidos
+        }
+        Entity Orden {
+            String idOrden
+            Date fecha
+            - List<Producto> productos
+        }
+        Entity TipoItem {
+            String tipoItem
+        }
+        Entity Pedido {
+            String idPedido
+            Date fecha
+            - List<Producto> productos
+            - EstadoPedido estado
+        }
+        Entity EstadoPedido {
+            String estado
+        }
+    }
+
+    Subdomain GestionInventarioDomain {
+        type = SUPPORTING_DOMAIN
+        domainVisionStatement = "Subdominio en el que se gestina todo lo relacionado con actividades de gestión del inventario."
+        Entity Producto {
+            String idProducto
+            String descripcion
+            - TipoItem tipo
+        }
+        Entity Bodega {
+            String idBodega
+            String descripcion
+            - Ciudad ciudad
+            - TipoBodega tipoBodega
+            - Coordenada coordenadas
+            String direccion
+            - List<Producto> existencias
+        }
+        Entity TipoBodega {
+            String tipoBodega
+        }
+        Entity CentroDistribucion {
+            String idCentroDistribucion
+            - Ciudad ciudad
+            - Coordenada coordenada
+            String direccion
+            - List<Producto> existencias
+        }
+        Entity Ciudad {
+            String idCiudad
+        }
+        Entity Distribuidor {
+            String idDistribuidor
+            String razonSocial
+        }
+    }
+
+    Subdomain OutboundDomain {
+        type = SUPPORTING_DOMAIN
+        domainVisionStatement = "Subdominio en el que se gestina todo lo relacionado con actividades de salida."
+        Entity Paquete {
+            - List<Pedido> pedidos
+        }
+    }
+
+}
+
+Domain LogisticaDomain {
+    domainVisionStatement = "Cumplimiento de la órden."
+  Subdomain FacilitacionDomain {
+        type = CORE_DOMAIN
+        domainVisionStatement = "Subdominio en el que se gestina todo lo relacionado con planificación, despacho de pedidos y gestión de instalaciones."
+        Entity Transporte {
+            - Orden orden
+        }
+        Entity HojaRuta {
+            String idHojaRuta
+            - List<Pedido> pedidos
+            - List<PuntoEntrega> puntosEntrega
+        }
+        Entity PuntoEntrega {
+            String idPuntoEntrega
+            String nombre
+            - Coordenada coordenada
+            String direccion
+        }
+        Entity Coordenada {
+            String latitud
+            String longitud
+        }
+    }
+
+    Subdomain EjecucionDomain {
+        type = CORE_DOMAIN
+        domainVisionStatement = "Subdominio en el que se gestina todo lo relacionado con gestión de última milla e integración con couriers."
+        Entity Entrega {
+            String idEntrega
+            - Orden orden
+            - TipoEntrega tipoEntrega
+            - SLO slo
+        }
+        Entity TipoEntrega {
+            String tipoEntrega
+        }
+        Entity SLO {
+            Integer minutos
+        }
+        Entity PickuPoint {
+            String id
+            String nombre
+            - Coordenada coordenada
+            String direccion
+        }
+    }
+
+}
+
