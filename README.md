@@ -33,5 +33,5 @@ Esta se encuentra en el siguiente link:
 La entrega se realizo con la herramienta Gitpod.io, se adjunta los links pertinentes: 
   - .gitpod.Dockerfile: (https://github.com/jpfeliciano/alpes-online/blob/master/.gitpod.Dockerfile)
   - .gitpod.yml: (https://github.com/jpfeliciano/alpes-online/blob/master/.gitpod.yml)
-La guia de entrega se encuentra en el siguiente pdf:
+  - La guia de entrega se encuentra en el siguiente pdf:
 Entrega1: (https://github.com/jpfeliciano/alpes-online/blob/master/Entrega1/Entrega1-LenguajeUbicuo-Dominio.pdf)
